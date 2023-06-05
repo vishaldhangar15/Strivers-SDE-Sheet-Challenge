@@ -1,0 +1,14 @@
+#include <bits/stdc++.h> 
+int maximumProfit(vector<int> &prices){
+    int first_buy = INT_MIN;
+    int first_sell = 0;
+
+    for(int i=0 ; i < prices.size() ; i++)
+    {
+        first_buy = max(first_buy , -prices[i]);
+        first_sell = max(first_sell , first_buy + prices[i]);
+    }
+
+
+    return first_sell;
+}
