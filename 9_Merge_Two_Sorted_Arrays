@@ -1,0 +1,39 @@
+
+#include <bits/stdc++.h>
+
+vector<int> ninjaAndSortedArrays(vector<int>& nums1, vector<int>& nums2
+, int m, int n) {
+	// Write your code here.
+	  vector<int> nums3=nums1;
+        int i,j,k;
+        i=j=k=0;
+        while(i < m && j < n)
+        {
+            if(nums3[i]>nums2[j])
+            {
+                nums1[k++]=nums2[j++];
+                
+            }
+            else if(nums2[j] > nums3[i])
+            {
+                nums1[k++]=nums3[i++];
+            }
+            else
+            {
+                nums1[k++]=nums3[i++];
+                nums1[k++]=nums2[j++];
+            }
+        }
+        
+        for( ; i < m ; i ++)
+        {
+            nums1[k++]=nums3[i];
+        }
+        
+        for(; j < n ; j++)
+        {
+            nums1[k++]=nums2[j];
+        }
+
+        return nums1;
+}
