@@ -1,0 +1,20 @@
+bool searchMatrix(vector<vector<int>>& mat, int target) {
+
+    int m = mat.size();
+    int n = mat[0].size();
+
+    int row=1;
+    int col=0;
+    while(row < m)
+    {
+        if(target < mat[row][col])
+            break;
+        row++;
+    }
+
+  
+    
+    return binary_search(mat[row-1].begin() , mat[row-1].end() 
+    , target);
+        
+}
