@@ -1,0 +1,35 @@
+#include <bits/stdc++.h> 
+
+void rec(vector<int> arr , int n , vector<int> &temp , int index
+,vector<vector<int>> &ans)
+{
+   if(index >= n)
+   {
+      ans.push_back(temp);
+      return;
+   }
+//    Include wali call
+    temp.push_back(arr[index]);
+    rec(arr , n , temp ,  index+1 , ans);
+
+    // exclude wali call 
+    temp.pop_back();
+    while(index+1 < n && arr[index] == arr[index+1]) index++;
+    rec(arr , n , temp ,  index+1 , ans);
+
+
+}
+vector<vector<int>> uniqueSubsets(int n, vector<int> &arr)
+{
+    // Write your code here.
+    sort(arr.begin() , arr.end());
+    vector<vector<int>> ans;
+    vector<int> temp;
+    rec(arr , n , temp , 0 , ans);
+
+    sort(ans.begin() , ans.end());
+
+    return ans;
+
+
+}
