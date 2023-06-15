@@ -1,0 +1,25 @@
+#include <bits/stdc++.h> 
+void rec(vector<vector<int>> &ans , vector<int> v , vector<int> &temp ,int index)
+{
+    if(index >= v.size())
+    {
+        ans.push_back(temp);
+        return;
+    }
+
+    temp.push_back(v[index]);
+    rec(ans , v , temp , index+1);
+
+    temp.pop_back();
+    rec(ans , v , temp ,index+1);
+}
+vector<vector<int>> pwset(vector<int>v)
+{
+    //Write your code here
+    vector<vector<int>> ans;
+    vector<int> temp;
+    rec(ans , v , temp , 0);
+
+    sort(ans.begin() ,ans.end());
+    return ans;
+}
