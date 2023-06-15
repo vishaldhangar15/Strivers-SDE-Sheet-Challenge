@@ -1,0 +1,25 @@
+#include<stack>
+bool isValidParenthesis(string x)
+{
+    // Write your code here.
+        stack<char> st;
+       st.push('%');
+        for(int i=0 ;i  < x.length() ; i++)
+        {
+            if(x[i] == '(' || x[i] == '{' || x[i] == '[')
+                st.push(x[i]);
+            else if(x[i] == '}' && st.top() == '{')
+                st.pop();
+            else if(x[i] == ')' && st.top() == '(')
+                st.pop();
+            else if(x[i] == ']' && st.top() == '[')
+                st.pop();
+            else 
+                return false;
+        }
+        
+        if(st.size() == 1)
+            return true;
+        return false;
+        
+}
