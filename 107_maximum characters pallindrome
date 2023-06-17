@@ -1,0 +1,25 @@
+// how many no. of to be added at the front to make a string pallindrome
+
+#include<algorithm>
+
+
+
+int minCharsforPalindrome(string str) {
+	// Write your s here.
+	int n = str.size();
+	int i = 0, j = n - 1, count = 0, tempJ = j;
+	while(i < j) {
+		if(str[i] == str[j])
+			i++, j--;
+		else {
+			count++;
+			i = 0;
+			 tempJ--;
+			j = tempJ;
+		}
+	}	
+	return count;
+
+
+	
+}
