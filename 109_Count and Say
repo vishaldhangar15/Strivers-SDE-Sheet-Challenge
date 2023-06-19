@@ -1,0 +1,33 @@
+#include <bits/stdc++.h> 
+string writeAsYouSpeak(int n) 
+{
+	// Write your code here.	
+	      char init = '1';
+    string str = "1";
+    string res = "";
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        int j = 0;
+        while (str[j] != '\0')
+        {
+            if (str[j] == str[j + 1])
+                init++;
+            else
+            {
+                res = res + init + str[j];
+
+                init = '1';
+            }
+            j++;
+        }
+
+        // cout << endl;
+        str = res;
+        // cout << str << " " << endl;
+        res = "";
+    }
+
+    return str;
+
+}
