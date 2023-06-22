@@ -1,0 +1,14 @@
+
+TreeNode<int> * solve(TreeNode<int> *root , int x , int y)
+{
+    if(!root || root->data == x || root->data == y)
+        return root;
+    
+    TreeNode<int> * l = solve(root->left , x ,y);
+    TreeNode<int> *r = solve(root->right , x , y);
+    if(l && r)
+        return root;
+    if(l)
+        return l;
+    if(r)
+        return r;
