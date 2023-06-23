@@ -1,0 +1,28 @@
+    int leastInterval(int N, int k, vector<char> &tasks) {
+    
+   unordered_map<char, int> counts;
+        for(char t: tasks) 
+            counts[t]++;
+        priority_queue<int> pq;
+        for(auto c: counts)
+            pq.push(c.second);
+            
+        int maxi = pq.top();         // maximum freuency in array
+        pq.pop();
+        
+        int count = 0;
+        while(pq.top() == maxi && !pq.empty())
+        {
+            count++;
+            pq.pop();
+        }// finding no. of elements with same max frequency
+        
+        
+        int ans = maxi + k*(maxi-1) + count;
+        
+        return max(N , ans);
+        
+        
+   
+      
+    }
