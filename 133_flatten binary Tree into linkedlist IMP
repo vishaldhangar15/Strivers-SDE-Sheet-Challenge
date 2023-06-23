@@ -1,0 +1,26 @@
+void solve(TreeNode<int> *root)
+{
+    if(!root || (!root->left && !root->right))
+        return;
+    
+    if(root->left)
+    {
+        solve(root->left);
+        TreeNode<int> *temp = root->right;
+        root->right =root->left;
+        root->left = NULL;
+
+        TreeNode<int> *tmp = root->right;
+        while(tmp->right)
+            tmp = tmp->right;
+        
+        tmp->right =temp;
+    }
+    solve(root->right);
+}
+
+TreeNode<int> *flattenBinaryTree(TreeNode<int> *root)
+{
+     solve(root);
+     return root;
+}
