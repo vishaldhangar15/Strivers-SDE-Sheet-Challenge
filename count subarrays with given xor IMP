@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+
+int subarraysXor(vector<int> &arr, int x)
+{
+    //    Write your code here.
+    unordered_map<int,int> mp;
+    mp[0] = 1;
+    int currxor=0;
+    int ans =0;
+    for(int i=0 ; i < arr.size() ; i++)
+    {
+        currxor = currxor ^ arr[i];
+        int tar = currxor ^ x;
+        if(mp.find(tar)!= mp.end())
+            ans+= mp[tar];
+        
+        mp[currxor]++;
+    }
+
+    return ans;
+}
