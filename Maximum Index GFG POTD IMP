@@ -1,0 +1,37 @@
+Given an array arr[] of n positive integers. The task is to find the maximum of j - i subjected to the constraint of arr[i] <= arr[j].
+
+
+
+ int maxIndexDiff(int arr[], int n) {
+        // code here
+        int prevMin[n];
+        int nxtMax[n];
+        int prev = INT_MAX;
+        int nxt = INT_MIN;
+        for(int i=0 ; i < n ; i++)
+        {
+            prev = min(prev , arr[i]);
+            prevMin[i] = prev;
+        }
+        for(int i= n-1 ;i >=0  ; i--)
+        {
+            nxt = max(nxt , arr[i]);
+            nxtMax[i] = nxt;
+        }
+        int i=0;
+        int j=0;
+        int ans = 0;
+        while(i < n && j < n)
+        {
+            if(prevMin[i] <= nxtMax[j])
+            {
+                ans = max(ans , j-i);
+                j++;
+            }
+            else
+                i++;
+        }
+        
+        return ans;
+
+    }
