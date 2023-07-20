@@ -1,0 +1,38 @@
+#include <bits/stdc++.h> 
+
+bool ispossible(string s, int lo , int hi)
+{
+    while(lo <= hi)
+    {
+        if(s[lo] != s[hi])
+            return false;
+        lo++;
+        hi--;
+    }
+
+    return true;
+}
+
+int solve(string s, int index , vector<int> &dp)
+{
+    if(index >= s.length())
+        return 0;
+    if(dp[index] !=-1)
+        return dp[index];
+    int partition = 0;
+    int ans = INT_MAX;
+    for(int i=index ; i < s.length();i++)
+    {
+        if(ispossible(s , index , i))
+            partition =1 + solve(s ,i+1 ,dp);
+        ans = min(ans, partition);
+
+    }
+
+    return dp[index] = ans;
+}
+int palindromePartitioning(string str) {
+    // Write your code here
+    vector<int> dp(str.length()+1 , -1);
+    return solve(str , 0 , dp)-1;
+}
